@@ -1,0 +1,24 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="well">
+    <h3>EEG Processing System</h3>
+    <p>
+
+    <figure class="figure">
+    <img src={{ url_for('static',filename='index_img.jpg') }} class="figure-img img-fluid img-rounded" alt="A generic square placeholder image with rounded corners in a figure." style="width:100%">
+    </figure>
+    {% if not authenticated_user %} <b> Are you a collaborator? <a href="login"> Please Log in</a> </b>
+    {% else %} <b> <a href="upload"> Upload or review data.  </a> </b>
+    {% endif %}
+    </p>
+</div>
+{% endblock %}

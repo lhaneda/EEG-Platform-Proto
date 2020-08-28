@@ -1,0 +1,73 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Study Archive
+{% endblock %}
+
+
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/styles.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Study Archives</h2>
+    {% include 'flash.html' %}
+
+    <table class="table table-hover table-dark ">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Study Name</th>
+          <th scope="col">Collaborators</th>
+          <th scope="col">Number of EEGs</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+      {% for study in studies %}
+      <tr>
+          <td>
+              <a href="{{ url_for('study_status', study_id=study['study_id']) }}">
+                  {{ study['study_name'] }}
+              </a>
+          </td>
+          <td> {{ ' '.join(study['collab_user_name']) }} </td>
+          <td> {{ study['file_count'] }} </td>
+          <td>
+              <button type="button" onclick="window.location='{{ url_for('upload', study_id=study['study_id']) }}';"
+                      class="btn btn-default btn-sm">Upload File</button>
+          </td>
+          <td>
+              <button type="button"
+                      onclick="window.location.href='{{ url_for('edit_study', study_id=study['study_id']) }}';"
+                      class="btn btn-default btn-sm">Edit Study</button>
+          </td>
+          <td>
+              <button type="button"
+                      onclick="window.location.href='{{ url_for('list_files', study_id=study['study_id']) }}';"
+                      class="btn btn-default btn-sm">List Files</button>
+          </td>
+
+          <td>
+            <form class="delete-form" action="{{ url_for('delete_study', study_id=study['study_id']) }}" method="POST">
+                <button type="submit" class="btn btn-danger btn-sm">Delete Study</button>
+              </form>
+          </td>
+      </tr>
+      {% endfor %}
+
+      </tbody>
+    </table>
+    <br/>
+</div> <!-- /container -->
+
+{% endblock %}

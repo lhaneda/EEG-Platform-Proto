@@ -1,0 +1,89 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+List Files
+{% endblock %}
+
+
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/styles.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Files</h2>
+    {% include 'flash.html' %}
+
+    <table class="table table-hover table-dark ">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">File Name</th>
+          <!-- <th scope="col">srate</th>
+          <th scope="col">Length</th> -->
+          <th scope="col">Status</th>
+          <th scope="col">Upload Date (PST)</th>
+          <th scope="col">Sample Rate</th>
+          <th scope="col">Number of Channels</th>
+          <th scope="col">Length in Seconds</th>
+          <th scope="col">Download EEG</th>
+        </tr>
+      </thead>
+      <tbody>
+
+      {% if files is not none %}
+      {% for file in files %}
+      <tr>
+        <td> <a href="{{url_for('list_channels', study_id = study_id, filename=file.filename)}}"><b>{{ file.filename }}</b></a></td>
+        {% if file.procFlag == 0 %}
+        <td><a href="{{url_for('results', study_id = study_id, filename=file.filename)}}">Waiting</a></td>
+        {% elif file.procFlag == 1 %}
+          <td>Processing</td>
+        {% elif file.procFlag == 2 %}
+          <td>Finished</td>
+        {% else %}
+          <td>Unkown</td>
+        {% endif %}
+        <td> {{ file.dateUpload }} </td>
+        <td> {{ file.srate }} </td>
+        <td> {{ file.channel_num }} </td>
+        <td> {{ file.length }} </td>
+
+        <td class="td-buttons">
+            <form class="download-form" action="{{ url_for('download') }}" method="POST">
+              <input type="hidden" name="key" value="{{ file.s3_key }}">
+              <button type="submit" class="btn btn-default btn-sm">
+                <i class="fa fa-download"></i>
+              </button>
+            </form>
+        </td>
+
+        <td>
+            <button type="button"
+                    onclick="window.location.href='{{ url_for('results', study_id = study_id, filename=file.filename) }}';"
+                    class="btn btn-default btn-sm">Results</button>
+        </td>
+
+        <td>
+            <form class="delete-form" action="{{ url_for('delete_file', file_id=file.id) }}" method="POST">
+              <!-- <input type="hidden" name="key" value="{{ file.s3_key }}"> -->
+              <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+            </form>
+        </td>
+      </tr>
+      {% endfor %}
+      {% endif %}
+
+      </tbody>
+    </table>
+    <br/>
+</div> <!-- /container -->
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Study Status
+{% endblock %}
+
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/styles.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<div class="container">
+{% if study_name is not none %}
+    <h2>{{ study_name }}</h2>
+{% endif %}
+{%  if description is not none %}
+    <p>{{ description }}</p>
+{% endif %}
+</div>
+<div class="container">
+    <h2>Collaborators</h2>
+
+    <table class="table table-hover table-dark ">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Collaborator Usernames</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        {% if collaborators is not none %}
+          {% for collaborator in collaborators %}
+          <tr>
+            <td>{{collaborator}}</td>
+          </tr>
+          {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+    <br/>
+</div>
+
+
+{% endblock %}

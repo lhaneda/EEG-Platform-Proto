@@ -1,0 +1,101 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+About
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+  <div class="row" >
+    <div class="col-lg-4 col-xs-4">
+        <a href="https://www.linkedin.com/in/drdata/" class="thumbnail" style="text-align:center" target="_blank">
+          <img src={{ url_for('static',filename='people/nick-ross.jpg') }} alt="Lights" class="img-responsive">
+          <div class="caption">
+            <p style="font-weight:bold">Nick Ross</p>
+          </div>
+        </a>
+    </div>
+    <div class="col-lg-4 col-xs-4">
+        <a href="https://www.linkedin.com/in/diane-woodbridge/" class="thumbnail" style="text-align:center" target="_blank">
+          <img src={{ url_for('static',filename='people/woodbridge-diane.jpg') }} alt="Lights" class="img-responsive">
+          <div class="caption">
+            <p style="font-weight:bold">Diane Woodbridge</p>
+          </div>
+        </a>
+    </div>
+    <div class="col-lg-4 col-xs-4">
+        <a href="https://www.linkedin.com/in/abbiepopa/" class="thumbnail" style="text-align:center" target="_blank">
+          <img src={{ url_for('static',filename='people/popa-abbie.jpg') }} alt="Lights" class="img-responsive">
+          <div class="caption">
+            <p style="font-weight:bold">Abbie Popa</p>
+          </div>
+        </a>
+    </div>
+    <div class="row">
+      <div class="col-lg-4 col-xs-4">
+          <a href="https://gabrielcee27.github.io/" class="thumbnail" style="text-align:center" target="_blank">
+            <img src={{ url_for('static',filename='people/gabe.png') }} alt="Lights" class="img-responsive">
+            <div class="caption">
+              <p style="font-weight:bold">Gabriel Cisneros</p>
+            </div>
+          </a>
+      </div>
+         <div class="col-lg-4 col-xs-4">
+          <a href="#" class="thumbnail" style="text-align:center" target="_blank">
+            <img src={{ url_for('static',filename='people/githubpic.png') }} alt="Lights" class="img-responsive">
+            <div class="caption">
+              <p style="font-weight:bold">Virginia Differding</p>
+            </div>
+          </a>
+      </div>
+      <div class="col-lg-4 col-xs-4">
+          <a href="https://www.linkedin.com/in/leon-haneda-54395b109/" class="thumbnail" style="text-align:center" target="_blank">
+            <img src={{ url_for('static',filename='people/IMG_3389.jpg') }} alt="Lights" class="img-responsive">
+            <div class="caption">
+              <p style="font-weight:bold">Leon Haneda</p>
+            </div>
+          </a>
+      </div>
+
+    </div>
+	<div>
+      <div class="col-lg-4 col-xs-4">
+          <a href="https://www.linkedin.com/in/gokulkrishnag/" class="thumbnail" style="text-align:center" target="_blank">
+            <img src={{ url_for('static',filename='people/gokul.jpeg') }} alt="Lights" class="img-responsive">
+            <div class="caption">
+              <p style="font-weight:bold">Gokul Krishna G</p>
+            </div>
+          </a>
+      </div>
+
+    </div>
+    <div>
+      <div class="col-lg-4 col-xs-4">
+          <a href="https://www.linkedin.com/in/xiao-han-4aa31793/" class="thumbnail" style="text-align:center" target="_blank">
+            <img src={{ url_for('static',filename='people/Xiao_Han.jpeg') }} alt="Lights" class="img-responsive">
+            <div class="caption">
+              <p style="font-weight:bold">Xiao Han</p>
+            </div>
+          </a>
+      </div>
+     <div>
+      <div class="col-lg-4 col-xs-4">
+          <a href="https://www.linkedin.com/in/william-bosl-0381474/" class="thumbnail" style="text-align:center" target="_blank">
+            <img src={{ url_for('static',filename='people/Bill.jpeg') }} alt="Lights" class="img-responsive">
+            <div class="caption">
+              <p style="font-weight:bold">William Bosl</p>
+            </div>
+          </a>
+      </div>
+
+
+    </div>
+</div>
+
+{% endblock %}

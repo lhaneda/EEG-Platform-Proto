@@ -1,0 +1,35 @@
+ERROR:root:File with name 20180420134015_B14-1-1 2yr.edf is empty
+ERROR:root:File with name 20180422091207_B9-1-2 2yr.edf cannot be processed
+Traceback (most recent call last):
+  File "website.py", line 64, in EEGValid
+    f = pyedflib.EdfReader(ftemp.name)
+  File "pyedflib\_extensions\_pyedflib.pyx", line 116, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib\_extensions\_pyedflib.pyx", line 155, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib\_extensions\_pyedflib.pyx", line 127, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+OSError: the file is not EDF(+) or BDF(+) compliant (Filesize)
+ERROR:root:File with name 20180420134015_B14-1-1 2yr.edf is empty
+ERROR:root:File with name 20180420134015_B14-1-1 2yr.edf is empty
+ERROR:root:File with name 20180422091207_B9-1-2 2yr.edf cannot be processed
+Traceback (most recent call last):
+  File "website.py", line 67, in EEGValid
+    f = pyedflib.EdfReader(ftemp.name)
+  File "pyedflib\_extensions\_pyedflib.pyx", line 116, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib\_extensions\_pyedflib.pyx", line 155, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib\_extensions\_pyedflib.pyx", line 127, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+OSError: the file is not EDF(+) or BDF(+) compliant (Filesize)
+ERROR:root:File with name 20180422091207_B9-1-2 2yr.edf cannot be processed
+Traceback (most recent call last):
+  File "website.py", line 64, in EEGValid
+    f = pyedflib.EdfReader(ftemp.name)
+  File "pyedflib\_extensions\_pyedflib.pyx", line 116, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib\_extensions\_pyedflib.pyx", line 155, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib\_extensions\_pyedflib.pyx", line 127, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+OSError: the file is not EDF(+) or BDF(+) compliant (Filesize)
+ERROR:root:File with name 20180422091207_B9-1-2 2yr.edf cannot be processed
+Traceback (most recent call last):
+  File "website.py", line 65, in EEGValid
+    f = pyedflib.EdfReader(ftemp.name)
+  File "pyedflib\_extensions\_pyedflib.pyx", line 116, in pyedflib._extensions._pyedflib.CyEdfReader.__init__
+  File "pyedflib\_extensions\_pyedflib.pyx", line 155, in pyedflib._extensions._pyedflib.CyEdfReader.open
+  File "pyedflib\_extensions\_pyedflib.pyx", line 127, in pyedflib._extensions._pyedflib.CyEdfReader.check_open_ok
+OSError: the file is not EDF(+) or BDF(+) compliant (Filesize)

@@ -1,0 +1,71 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Study
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+
+{% block content %}
+<body>
+    <div class="container">
+        <h2>{{ study_name }}</h2>
+        <div class="row">
+          <div class="col-sm-6">
+            <a class="btn btn-primary" href="{{url_for('parameters', study_id=study_id)}}" role="button">Edit Parameters</a>
+          </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Collaborators</h2>
+                  <table class="table table-bordered">
+                    <thead>
+                      <tr>
+                        <th>Username</th>
+                        <th>Email</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    {% for collab in collaborators %}
+                      <tr>
+                        <td>{{ collab.username }}</td>
+                        <td>{{ collab.email }}</td>
+                      </tr>
+                    {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+
+            <div class="col-sm-6">
+                <form method="POST">
+                    <h3>Add Collaborators</h3>
+                    {{ wtf.form_field(form.collab_name, placeholder='Collaborator\'s Name, separate by comma') }}
+                    <center> {{ wtf.form_field(form.submit, class="btn btn-success", value="add")}}</center>
+                </form>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-6">
+                <h2>Study Description</h2>
+                  <div class="text">{{ description }}</div>
+            </div>
+
+            <div class="col-sm-6">
+                <form method="POST">
+                    <h3>Edit Description</h3>
+                    {{ wtf.form_field(form.description, placeholder='Optional') }}
+                    <center> {{ wtf.form_field(form.submit, class="btn btn-success", value="edit")}}</center>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- <p><a href="{{ url_for('parameters', study_id = study_id) }}">Check out this parameters!</a></p> -->
+
+</body>
+
+{% endblock %}

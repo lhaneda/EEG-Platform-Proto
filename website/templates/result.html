@@ -1,0 +1,63 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}
+Results
+{% endblock %}
+
+
+{% block head %}
+{{super()}}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css" integrity="sha384-v2Tw72dyUXeU3y4aM2Y0tBJQkGfplr39mxZqlTBDUZAb9BGoC40+rdFCG0m10lXk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/fontawesome.css" integrity="sha384-q3jl8XQu1OpdLgGFvNRnPdj5VIlCvgsDQTQB6owSOHWlAurxul7f+JpUOVdAiJ5P" crossorigin="anonymous">
+<link rel="stylesheet" href="/static/styles.css">
+{% endblock %}
+
+{% block navbar %}
+    {% include 'navbar.html' %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Result</h2>
+
+    <form class="download-form" action="{{ url_for('return_csv') }}" method="POST">
+      <input type="hidden" name="filename" value="{{ filename }}">
+      <input type="hidden" name="study_id" value="{{ study_id }}">
+      <button type="submit" class="btn btn-default btn-sm">
+        <i class="fa fa-download"></i>
+      </button>
+    </form>
+
+    <table class="table table-hover table-dark ">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Channel</th>
+          <th scope="col">Band</th>
+          <th scope="col">Function</th>
+          <th scope="col">Value</th>
+          <th scope="col">Start Time</th>
+          <th scope="col">End Time</th>
+          <th scope="col">TS Completed</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% if result_file is not none %}
+          {% for file in result_file %}
+          <tr>
+            <td>{{file.channel}}</td>
+            <td>{{file.band}}</td>
+            <td>{{file.function}}</td>
+            <td>{{file.value}}</td>
+            <td>{{file.start_time}}</td>
+            <td>{{file.end_time}}</td>
+            <td>{{file.ts_completed}}</td>
+          </tr>
+          {% endfor %}
+        {% endif %}
+      </tbody>
+    </table>
+    <br/>
+</div>
+
+{% endblock %}
